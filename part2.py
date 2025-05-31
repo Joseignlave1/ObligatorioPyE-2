@@ -5,7 +5,7 @@ import numpy as np
 import seaborn as sns
 
 # Parte 1 - Simulación de variables uniformes en [0,1]
-def simulate_random_variable(n: int) -> list[float]:
+def LCG(n: int) -> list[float]:
     a = 1664525
     c = 1013904223
     m = 2**32
@@ -19,7 +19,7 @@ def simulate_random_variable(n: int) -> list[float]:
     return values
 
 # Parte 2 - Generar muestra uniforme y graficar
-samples = simulate_random_variable(100)
+samples = LCG(100)
 
 sns.histplot(samples, bins=20, kde=True, stat="density", color='skyblue', edgecolor='black')
 plt.title("Muestra de 100 variables uniformes en [0,1]")
