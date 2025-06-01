@@ -1,5 +1,5 @@
 # ObligatorioPyE-2
-##Instrucciónes para ejecutar el proyecto.
+## Instrucciones para ejecutar el proyecto.
 ---
 
 ## 🧰 Requisitos previos
