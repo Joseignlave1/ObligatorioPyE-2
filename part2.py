@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 
-# Parte 1 - Simulación de variables uniformes en [0,1]
 def LCG(n: int) -> list[float]:
     a = 1664525
     c = 1013904223
@@ -18,43 +17,36 @@ def LCG(n: int) -> list[float]:
         seed = x
     return values
 
-# Parte 2 - Generar muestra uniforme y graficar
-samples = LCG(100)
+def graficar_uniformes(samples: list[float]):
+    x_uniform = np.linspace(0, 1, 100)
+    y_uniform = [1 for _ in x_uniform]
 
-sns.histplot(samples, bins=20, kde=True, stat="density", color='skyblue', edgecolor='black')
-plt.title("Muestra de 100 variables uniformes en [0,1]")
-plt.xlabel("Valor")
-plt.ylabel("Densidad")
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+    sns.histplot(samples, bins=20, kde=True, stat="density",
+                 color='skyblue', edgecolor='black', label="Muestra + KDE")
+    plt.plot(x_uniform, y_uniform, label="Densidad teórica Uniforme", color='green')
+    plt.title("Muestra de 100 variables uniformes en [0,1]")
+    plt.xlabel("Valor")
+    plt.ylabel("Densidad")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
 
-
-# Parte 3 y 4 Transformación por función inversa a distribucción de Cauchy estándar
 def transform_to_cauchy(uniform_samples: list[float]) -> list[float]:
-    cauchy_samples = []
-    for u in uniform_samples:
-        x = math.tan(math.pi * (u - 0.5))
-        cauchy_samples.append(x)
-    return cauchy_samples
+    return [math.tan(math.pi * (u - 0.5)) for u in uniform_samples]
 
-# Parte 5 - Muestra de tamaño 100 de variables aleatorias independientes, con distribución de Cauchy, superponiendo en el gráfico la densidad teórica de la cauchy estandar.
-def densidad_cauchy(x):
-    return 1 / (math.pi * (1 + x**2))
+def graficar_cauchy(cauchy_samples: list[float]):
+    x_vals = np.linspace(-10, 10, 1000)
+    y_vals = [1 / (math.pi * (1 + x**2)) for x in x_vals]
 
-x_vals = np.linspace(-10, 10, 1000)
-y_vals = [densidad_cauchy(x) for x in x_vals]
-
-
-cauchy_samples = transform_to_cauchy(samples)
-
-sns.histplot(cauchy_samples, bins=60, kde=True, stat="density", color='lightcoral', edgecolor='black', label="Muestra + KDE")
-plt.plot(x_vals, y_vals, label="Densidad teórica Cauchy", color='blue')
-plt.title("Distribución Cauchy: simulación vs densidad teórica")
-plt.xlabel("Valor")
-plt.ylabel("Densidad")
-plt.legend()
-plt.grid(True)
-plt.xlim(-10, 10)
-plt.tight_layout()
-plt.show()
+    sns.histplot(cauchy_samples, bins=60, kde=True, stat="density",
+                 color='lightcoral', edgecolor='black', label="Muestra + KDE")
+    plt.plot(x_vals, y_vals, label="Densidad teórica Cauchy", color='blue')
+    plt.title("Distribución Cauchy: simulación vs densidad teórica")
+    plt.xlabel("Valor")
+    plt.ylabel("Densidad")
+    plt.legend()
+    plt.grid(True)
+    plt.xlim(-10, 10)
+    plt.tight_layout()
+    plt.show()
