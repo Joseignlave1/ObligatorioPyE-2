@@ -1,9 +1,5 @@
 # ObligatorioPyE-2
-
-# Proyecto de Simulación y Análisis de Datos
-
-Este proyecto implementa un menú interactivo en consola para realizar simulaciones de variables aleatorias, transformaciones estadísticas y análisis empírico sobre datos de cancelaciones. El menú permite ejecutar distintos módulos del proyecto, como la generación de muestras uniformes, transformación a distribución Cauchy, y análisis estadístico de datos reales.
-
+##Instrucciónes para ejecutar el proyecto.
 ---
 
 ## 🧰 Requisitos previos
