@@ -1,4 +1,4 @@
-# ObligatorioPyE-2
+# Segundo Obligatorio Probabilidad y Estadística
 
 ---
 ## 🧰 Requisitos previos
