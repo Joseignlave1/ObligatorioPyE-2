@@ -2,7 +2,6 @@
 ---
 ## Instrucciones para ejecutar el proyecto.
 ---
-
 ## 🧰 Requisitos previos
 
 Asegurate de tener instaladas las siguientes herramientas:
